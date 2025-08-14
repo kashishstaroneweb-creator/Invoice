@@ -37,9 +37,10 @@ mongoose.connect(process.env.MONGO_URI)
         process.exit(1);
     });
 
-    app.get("/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Welcome to the Invoice Management API!");
 });
+
 // Routes
 app.use("/api/clients", clientRoutes);
 app.use("/api/companies", companyRoutes);
@@ -48,5 +49,5 @@ app.use("/api/settings", settingsRoutes);
 app.use("/api/invoices", invoiceRoutes);
 app.use("/api/users", userRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Export app for Vercel
+module.exports = app;
