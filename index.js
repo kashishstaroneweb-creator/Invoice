@@ -37,6 +37,9 @@ mongoose.connect(process.env.MONGO_URI)
         process.exit(1);
     });
 
+    app.get("/", (req, res) => {
+    res.send("Welcome to the Invoice Management API!");
+});
 // Routes
 app.use("/api/clients", clientRoutes);
 app.use("/api/companies", companyRoutes);
